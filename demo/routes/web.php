@@ -19,6 +19,7 @@ Route::prefix('collection')->group(function () {
     Route::get('practice-1', 'CollectionController@practice1');
     Route::get('practice-3', 'CollectionController@practice3');
     Route::get('practice-4', 'CollectionController@practice4');
+    Route::get('practice-5', 'CollectionController@practice5');
 });
 
 Route::prefix('refactor-collection')->group(function () {
@@ -26,4 +27,5 @@ Route::prefix('refactor-collection')->group(function () {
     Route::get('practice-3', 'RefactorCollectionController@practice3');
     Route::get('practice-4', 'RefactorCollectionController@practice4');
     Route::get('practice-13', 'RefactorCollectionController@practice13');
+    Route::get('practice-5', 'RefactorCollectionController@practice5');
 });

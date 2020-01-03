@@ -51,4 +51,22 @@ class BaseController extends Controller
         ['score' => 67, 'team' => 'G'],
         ['score' => 82, 'team' => 'H'],
     ];
+
+    protected $employees = [
+        [
+            'name' => 'John',
+            'department' => 'Sales',
+            'email' => 'john@example.com'
+        ],
+        [
+            'name' => 'Jane',
+            'department' => 'Marketing',
+            'email' => 'jane@example.com'
+        ],
+        [
+            'name' => 'Dave',
+            'department' => 'Marketing',
+            'email' => 'dave@example.com'
+        ],
+    ];
 }

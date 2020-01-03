@@ -22,6 +22,17 @@ class CollectionController extends BaseController
         echo sprintf("Your Github score is: %s", $this->githubScore("minhnv2306"));
     }
 
+    public function practice5()
+    {
+        $emailLookup = collect($this->employees)->reduce(function ($emailLookup, $employee) {
+            $emailLookup[$employee['email']] = $employee['name'];
+
+            return $emailLookup;
+        }, []);
+
+        dd("Lookup table: ", $emailLookup);
+    }
+
     private function computePriceLampsAndWallets($products)
     {
         $totalCost = 0;

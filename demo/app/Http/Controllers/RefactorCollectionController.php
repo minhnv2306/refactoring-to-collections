@@ -31,6 +31,15 @@ class RefactorCollectionController extends BaseController
         });
     }
 
+    public function practice5()
+    {
+        $emailLookup = collect($this->employees)->mapToAssoc(function ($employee) {
+            return [$employee['email'], $employee['name']];
+        });
+
+        dd("Lookup table: ", $emailLookup->toArray());
+    }
+
     private function computePriceLampsAndWallets($products)
     {
         return collect($products)->filter(function ($product) {
