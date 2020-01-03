@@ -1,0 +1,1 @@
+This document is synthesized from [Refactoring to collections](https://adamwathan.me/refactoring-to-collections/)
