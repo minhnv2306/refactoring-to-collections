@@ -40,4 +40,15 @@ class BaseController extends Controller
     ];
 
     protected $binaryValue = '100110101';
+
+    protected $scores = [
+        ['score' => 76, 'team' => 'A'],
+        ['score' => 62, 'team' => 'B'],
+        ['score' => 82, 'team' => 'C'],
+        ['score' => 86, 'team' => 'D'],
+        ['score' => 91, 'team' => 'E'],
+        ['score' => 67, 'team' => 'F'],
+        ['score' => 67, 'team' => 'G'],
+        ['score' => 82, 'team' => 'H'],
+    ];
 }

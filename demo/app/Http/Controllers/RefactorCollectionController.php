@@ -22,6 +22,15 @@ class RefactorCollectionController extends BaseController
         echo sprintf("Your Github score is: %s", $this->githubScore("minhnv2306"));
     }
 
+    public function practice13()
+    {
+        echo sprintf("Ranking a Competition: <br>");
+
+        $this->rank_scores($this->scores)->each(function ($item) {
+            echo sprintf("Team %s, score: %s, ranking: %s <br> ", $item['team'], $item['score'], $item['rank']);
+        });
+    }
+
     private function computePriceLampsAndWallets($products)
     {
         return collect($products)->filter(function ($product) {
@@ -57,7 +66,7 @@ class RefactorCollectionController extends BaseController
         return collect(json_decode($res->getBody(), true));
     }
 
-    private  function lookupEventScore($eventType)
+    private function lookupEventScore($eventType)
     {
         return collect([
             'PushEvent' => 5,
@@ -65,5 +74,13 @@ class RefactorCollectionController extends BaseController
             'IssuesEvent' => 3,
             'CommitCommentEvent' => 2,
         ])->get($eventType, 1);
+    }
+
+    private function rank_scores($scores)
+    {
+        return collect($scores)
+            ->pipe('assign_initial_rankings')
+            ->pipe('adjust_rankings_for_ties')
+            ->sortBy('rank');
     }
 }

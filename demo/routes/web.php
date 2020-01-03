@@ -25,4 +25,5 @@ Route::prefix('refactor-collection')->group(function () {
     Route::get('practice-1', 'RefactorCollectionController@practice1');
     Route::get('practice-3', 'RefactorCollectionController@practice3');
     Route::get('practice-4', 'RefactorCollectionController@practice4');
+    Route::get('practice-13', 'RefactorCollectionController@practice13');
 });
