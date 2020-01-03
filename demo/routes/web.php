@@ -14,3 +14,11 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::prefix('collection')->group(function () {
+    Route::get('practice-1', 'CollectionController@practice1');
+});
+
+Route::prefix('refactor-collection')->group(function () {
+    Route::get('practice-1', 'RefactorCollectionController@practice1');
+});
