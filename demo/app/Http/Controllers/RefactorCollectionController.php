@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 
 class RefactorCollectionController extends BaseController
@@ -14,6 +15,11 @@ class RefactorCollectionController extends BaseController
     public function practice3()
     {
         echo sprintf("Converting binary value %s to decimal is: %s", $this->binaryValue, $this->binaryToDecimal($this->binaryValue));
+    }
+
+    public function practice4()
+    {
+        echo sprintf("Your Github score is: %s", $this->githubScore("minhnv2306"));
     }
 
     private function computePriceLampsAndWallets($products)
@@ -33,5 +39,31 @@ class RefactorCollectionController extends BaseController
             ->map(function ($column, $exponent) {
                 return $column * (2 ** $exponent);
             })->sum();
+    }
+
+    function githubScore($username)
+    {
+        return $this->fetchEvents($username)->pluck('type')->map(function ($eventType) {
+            return $this->lookupEventScore($eventType);
+        })->sum();
+    }
+
+    private function fetchEvents($username)
+    {
+        $url = "https://api.github.com/users/{$username}/events";
+        $client = new Client();
+        $res = $client->request('GET', $url);
+
+        return collect(json_decode($res->getBody(), true));
+    }
+
+    private  function lookupEventScore($eventType)
+    {
+        return collect([
+            'PushEvent' => 5,
+            'CreateEvent' => 4,
+            'IssuesEvent' => 3,
+            'CommitCommentEvent' => 2,
+        ])->get($eventType, 1);
     }
 }
