@@ -38,4 +38,6 @@ class BaseController extends Controller
             ]
         ],
     ];
+
+    protected $binaryValue = '100110101';
 }

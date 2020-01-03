@@ -11,6 +11,11 @@ class CollectionController extends BaseController
         echo sprintf("Price of lamp and wallet is: %s$", $this->computePriceLampsAndWallets($this->products));
     }
 
+    public function practice3()
+    {
+        echo sprintf("Converting binary value %s to decimal is: %s", $this->binaryValue, $this->binaryToDecimal($this->binaryValue));
+    }
+
     private function computePriceLampsAndWallets($products)
     {
         $totalCost = 0;
@@ -29,5 +34,19 @@ class CollectionController extends BaseController
         }
 
         return $totalCost;
+    }
+
+    private function binaryToDecimal($binary)
+    {
+        $total = 0;
+        $exponent = strlen($binary) - 1;
+
+        for ($i = 0; $i < strlen($binary); $i++) {
+            $decimal = $binary[$i] * (2 ** $exponent);
+            $total += $decimal;
+            $exponent--;
+        }
+
+        return $total;
     }
 }
